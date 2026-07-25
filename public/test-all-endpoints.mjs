@@ -19,7 +19,7 @@ import { registerExactEvmScheme } from '@x402/evm/exact/client';
 import { privateKeyToAccount } from 'viem/accounts';
 import { createWalletClient, createPublicClient, http, getAddress, parseGwei } from 'viem';
 
-const DISCOVERY = 'https://x402-gateway-production.up.railway.app/.well-known/x402.json';
+const DISCOVERY = 'https://x402engine.app/.well-known/x402.json';
 const SECRETS = '/Users/moltboyxd/.openclaw/workspace/.secrets';
 const TIMEOUT_MS = 20000;
 

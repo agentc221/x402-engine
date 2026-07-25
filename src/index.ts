@@ -189,15 +189,15 @@ function buildDiscoveryResponse() {
   for (const s of services) {
     const cat = s.category || "basic";
     if (!categories[cat]) categories[cat] = [];
-    categories[cat].push({ id: s.id, name: s.name, price: s.price, endpoint: `https://x402-gateway-production.up.railway.app${s.path}` });
+    categories[cat].push({ id: s.id, name: s.name, price: s.price, endpoint: `https://x402engine.app${s.path}` });
   }
 
   return {
     name: "x402engine",
     version: "3.0.0",
     x402Version: 2,
-    baseUrl: "https://x402-gateway-production.up.railway.app",
-    important: "Always use the baseUrl above for API requests. The discovery endpoint may be served from a different domain (e.g. x402engine.app) but API calls must go to the baseUrl to avoid gateway errors.",
+    baseUrl: "https://x402engine.app",
+    important: "Use the canonical baseUrl above for every API request.",
     networks: {
       base: {
         chainId: baseChain.chainId,
@@ -238,7 +238,7 @@ function buildDiscoveryResponse() {
       name: s.name,
       description: s.description,
       price: s.price,
-      endpoint: `https://x402-gateway-production.up.railway.app${s.path}`,
+      endpoint: `https://x402engine.app${s.path}`,
       method: s.method,
       category: s.category || "basic",
       parameters: s.parameters,
@@ -250,14 +250,14 @@ function buildDiscoveryResponse() {
 function buildServicesResponse() {
   const services = getAllServices();
   return {
-    baseUrl: "https://x402-gateway-production.up.railway.app",
+    baseUrl: "https://x402engine.app",
     count: services.length,
     services: services.map((s) => ({
       id: s.id,
       name: s.name,
       description: s.description,
       price: s.price,
-      endpoint: `https://x402-gateway-production.up.railway.app${s.path}`,
+      endpoint: `https://x402engine.app${s.path}`,
       method: s.method,
       parameters: s.parameters,
     })),
@@ -382,10 +382,7 @@ function buildOpenApiResponse() {
       version: "3.0.0",
       description: "Pay-per-call API gateway for AI agents using HTTP 402 payments.",
     },
-    servers: [
-      { url: "https://x402-gateway-production.up.railway.app" },
-      { url: "https://x402engine.app" },
-    ],
+    servers: [{ url: "https://x402engine.app" }],
     paths,
     components: {
       securitySchemes: {
@@ -510,7 +507,7 @@ app.get("/api/*", freeEndpointLimiter, (req, res, next) => {
     id: svc.id,
     name: svc.name,
     description: svc.description,
-    endpoint: `https://x402-gateway-production.up.railway.app${svc.path}`,
+    endpoint: `https://x402engine.app${svc.path}`,
     method: svc.method,
     price: svc.price,
     requiresPayment: true,

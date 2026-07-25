@@ -9,7 +9,7 @@
  *      export SOLANA_PRIVATE_KEY=<base58-encoded-32-byte-key>
  *   2. Fund the wallet with a small amount of USDC on Solana mainnet (~$0.05)
  *      and a tiny amount of SOL for gas (~0.01 SOL)
- *   3. Run: GATEWAY_URL=https://x402-gateway-production.up.railway.app npx tsx test/pay-solana.ts
+ *   3. Run: GATEWAY_URL=https://x402engine.app npx tsx test/pay-solana.ts
  */
 
 import { createKeyPairSignerFromPrivateKeyBytes } from "@solana/kit";

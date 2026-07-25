@@ -7393,7 +7393,7 @@
   "manifest_id": "x402engine.agent-manifest.v1",
   "schema_version": "agent-manifest.v1",
   "service": {
-    "base_url": "https://x402-gateway-production.up.railway.app",
+    "base_url": "https://x402engine.app",
     "name": "x402engine"
   }
 }

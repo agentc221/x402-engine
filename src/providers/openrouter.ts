@@ -18,7 +18,7 @@ async function openrouterFetch(path: string, body: any): Promise<any> {
   const headers: Record<string, string> = {
     Authorization: `Bearer ${key}`,
     "Content-Type": "application/json",
-    "HTTP-Referer": "https://x402-gateway-production.up.railway.app",
+    "HTTP-Referer": "https://x402engine.app",
     "X-Title": "x402engine",
   };
 

@@ -90,7 +90,7 @@
             <span class="w-3 h-3 rounded-full bg-green-500/60"></span>
             <span class="ml-2 text-xs text-gray-500 font-mono">terminal</span>
           </div>
-          <pre class="p-5 overflow-x-auto"><code class="text-gray-300"><span class="text-gray-500">$</span> curl https://x402-gateway-production.up.railway.app/api/crypto/price?ids=bitcoin
+          <pre class="p-5 overflow-x-auto"><code class="text-gray-300"><span class="text-gray-500">$</span> curl https://x402engine.app/api/crypto/price?ids=bitcoin
 <span class="text-brand-400">HTTP/1.1 402 Payment Required</span>
 <span class="text-gray-500"># Response includes payment instructions — your agent pays automatically</span>
 
@@ -100,7 +100,7 @@
 <span class="text-emerald-400">const</span> client = <span class="text-emerald-400">new</span> x402Client();
 registerExactEvmScheme(client, { signer: account, networks: [<span class="text-amber-300">"eip155:8453"</span>] });
 <span class="text-emerald-400">const</span> paidFetch = wrapFetchWithPayment(fetch, client);
-<span class="text-emerald-400">const</span> data = <span class="text-emerald-400">await</span> paidFetch(<span class="text-amber-300">"https://x402-gateway-production.up.railway.app/api/crypto/price?ids=bitcoin"</span>);</code></pre>
+<span class="text-emerald-400">const</span> data = <span class="text-emerald-400">await</span> paidFetch(<span class="text-amber-300">"https://x402engine.app/api/crypto/price?ids=bitcoin"</span>);</code></pre>
         </div>
       </div>
     </div>
@@ -1207,7 +1207,7 @@ registerExactEvmScheme(client, { signer: account, networks: [<span class="text-a
 
 <span class="text-gray-500">// 3. Call any endpoint — payment happens transparently</span>
 <span class="text-emerald-400">const</span> res = <span class="text-emerald-400">await</span> paidFetch(
-  <span class="text-amber-300">"https://x402-gateway-production.up.railway.app/api/crypto/price?ids=bitcoin"</span>
+  <span class="text-amber-300">"https://x402engine.app/api/crypto/price?ids=bitcoin"</span>
 );
 <span class="text-emerald-400">const</span> data = <span class="text-emerald-400">await</span> res.json();
 console.log(data); <span class="text-gray-500">// { bitcoin: { usd: 97234.12, usd_24h_change: 2.31 } }</span></code></pre>

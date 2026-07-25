@@ -7,8 +7,8 @@ x402engine is an API gateway that provides 108 pay-per-call tools for AI agents 
 ## How to connect
 - MCP server (recommended): `npx -y x402engine-mcp`
 - Remote MCP endpoint: https://x402engine.app/mcp
-- REST API base: https://x402-gateway-production.up.railway.app
-- Discovery: https://x402-gateway-production.up.railway.app/.well-known/x402.json
+- REST API base: https://x402engine.app
+- Discovery: https://x402engine.app/.well-known/x402.json
 - Discovery alias: https://x402engine.app/.well-known/x402
 - Agent card: https://x402engine.app/.well-known/agent-card.json
 - OpenAPI: https://x402engine.app/openapi.json
@@ -167,7 +167,7 @@ const paidFetch = wrapFetchWithPayment(fetch, client, {
   paymentRequirementsSelector: (accepts) => accepts.find(a => a.network === 'eip155:8453'),
 });
 
-const res = await paidFetch('https://x402-gateway-production.up.railway.app/api/crypto/price?ids=bitcoin');
+const res = await paidFetch('https://x402engine.app/api/crypto/price?ids=bitcoin');
 ```
 
 ### Solana payment
@@ -242,7 +242,7 @@ const paidFetch = wrapFetchWithPaymentFromConfig(fetch, {
   schemes: [{ network: 'eip155:4326', client: scheme }],
 });
 
-const res = await paidFetch('https://x402-gateway-production.up.railway.app/api/crypto/price?ids=bitcoin');
+const res = await paidFetch('https://x402engine.app/api/crypto/price?ids=bitcoin');
 ```
 Key: USDm is 18 decimals (not 6). $0.001 = 1000000000000000 (10^15). Wallet needs USDm + tiny ETH for gas.
 

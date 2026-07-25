@@ -136,7 +136,7 @@
           <div class="card-glow rounded-xl p-5 space-y-2 text-sm">
             <div class="flex items-start gap-3">
               <span class="text-brand-400 mt-0.5">Base URL</span>
-              <code class="text-white font-mono text-xs break-all">https://x402-gateway-production.up.railway.app</code>
+              <code class="text-white font-mono text-xs break-all">https://x402engine.app</code>
             </div>
             <div class="flex items-start gap-3">
               <span class="text-brand-400 mt-0.5">Protocol</span>
@@ -189,7 +189,7 @@ registerExactEvmScheme(client, {
 });
 
 <span class="text-gray-500">// Call any endpoint — payment is transparent</span>
-<span class="text-emerald-400">const</span> BASE = <span class="text-amber-300">"https://x402-gateway-production.up.railway.app"</span>;
+<span class="text-emerald-400">const</span> BASE = <span class="text-amber-300">"https://x402engine.app"</span>;
 
 <span class="text-gray-500">// GET endpoint</span>
 <span class="text-emerald-400">const</span> price = <span class="text-emerald-400">await</span> paidFetch(<span class="text-amber-300">`${BASE}/api/crypto/price?ids=bitcoin`</span>);
@@ -225,7 +225,7 @@ console.log(<span class="text-emerald-400">await</span> balances.json());</code>
           <div class="mt-6 rounded-xl border border-brand-500/20 bg-brand-500/5 p-4 text-sm">
             <h4 class="text-brand-400 font-semibold mb-2">💡 Test All Endpoints</h4>
             <p class="text-gray-300 mb-2">Want to test all 108 endpoints at once? Download our comprehensive test suite:</p>
-            <pre class="bg-white/5 rounded px-3 py-2 text-xs overflow-x-auto"><code>curl -O https://x402-gateway-production.up.railway.app/test-all-endpoints.mjs
+            <pre class="bg-white/5 rounded px-3 py-2 text-xs overflow-x-auto"><code>curl -O https://x402engine.app/test-all-endpoints.mjs
 TEST_PRIVATE_KEY=0x... node test-all-endpoints.mjs</code></pre>
             <p class="text-gray-400 text-xs mt-2">Includes proper parameters and examples for every endpoint category.</p>
           </div>
@@ -239,7 +239,7 @@ TEST_PRIVATE_KEY=0x... node test-all-endpoints.mjs</code></pre>
           <h3 class="text-lg font-semibold text-white mb-3">Step 1: Initial request</h3>
           <div class="rounded-xl bg-surface-900 border border-white/5 overflow-hidden mb-6">
             <pre class="p-4 overflow-x-auto"><code class="text-sm text-gray-300">GET /api/crypto/price?ids=bitcoin HTTP/1.1
-Host: x402-gateway-production.up.railway.app</code></pre>
+Host: x402engine.app</code></pre>
           </div>
 
           <h3 class="text-lg font-semibold text-white mb-3">Step 2: 402 response</h3>
@@ -269,7 +269,7 @@ Content-Type: application/json
           <p class="text-gray-400 text-sm mb-3">Sign a payment using the details from <code class="text-xs bg-white/5 px-1 rounded">accepts</code> and send it in the <code class="text-xs bg-white/5 px-1 rounded">X-PAYMENT</code> header:</p>
           <div class="rounded-xl bg-surface-900 border border-white/5 overflow-hidden mb-6">
             <pre class="p-4 overflow-x-auto"><code class="text-sm text-gray-300">GET /api/crypto/price?ids=bitcoin HTTP/1.1
-Host: x402-gateway-production.up.railway.app
+Host: x402engine.app
 X-PAYMENT: &lt;base64-encoded signed payment payload&gt;</code></pre>
           </div>
 
@@ -446,7 +446,7 @@ Content-Type: application/json
 });
 
 <span class="text-gray-500">// ── Use like normal fetch ────────────────────────────────</span>
-<span class="text-emerald-400">const</span> BASE = <span class="text-amber-300">'https://x402-gateway-production.up.railway.app'</span>;
+<span class="text-emerald-400">const</span> BASE = <span class="text-amber-300">'https://x402engine.app'</span>;
 
 <span class="text-emerald-400">const</span> res = <span class="text-emerald-400">await</span> paidFetch(
   <span class="text-amber-300">`${BASE}/api/crypto/price?ids=bitcoin`</span>

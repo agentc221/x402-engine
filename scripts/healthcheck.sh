@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-BASE_URL="https://x402-gateway-production.up.railway.app"
+BASE_URL="https://x402engine.app"
 LOG_DIR="$HOME/x402-gateway/logs"
 ALERT_LOG="$LOG_DIR/healthcheck-alerts.log"
 TS=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
