@@ -328,8 +328,8 @@ function buildOpenApiResponse() {
 
     const operation: Record<string, any> = {
       summary: service.method === "GET"
-        ? `Fetch ${service.name} from x402engine`
-        : `Run ${service.name} through x402engine`,
+        ? `Fetch ${service.name} via ${service.id} from x402engine`
+        : `Run ${service.name} via ${service.id} through x402engine`,
       description: service.description,
       tags: [service.category || "services"],
       "x-service-id": service.id,
