@@ -5,6 +5,7 @@ import type { RoutesConfig } from "@x402/core/server";
 import { config } from "../config.js";
 import { MEGAETH_CONFIG, BASE_CONFIG, BASE_SEPOLIA_CONFIG } from "../config/chains.js";
 import { priceStringToTokenAmount } from "../lib/validation.js";
+import { buildBazaarExtensions } from "./bazaar.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -55,7 +56,10 @@ const NETWORKS = {
 };
 
 export function buildRoutesConfig(): RoutesConfig {
-  const routes: Record<string, { accepts: any[]; description: string; mimeType: string }> = {};
+  const routes: Record<
+    string,
+    { accepts: any[]; description: string; mimeType: string; extensions: Record<string, unknown> }
+  > = {};
   const isDev = config.isDev;
 
   for (const svc of services) {
@@ -126,6 +130,7 @@ export function buildRoutesConfig(): RoutesConfig {
       accepts,
       description: svc.description,
       mimeType: svc.mimeType,
+      extensions: buildBazaarExtensions(svc),
     };
   }
 

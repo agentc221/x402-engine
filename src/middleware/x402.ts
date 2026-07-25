@@ -5,6 +5,7 @@ import { ExactEvmScheme } from "@x402/evm/exact/server";
 import { ExactSvmScheme } from "@x402/svm/exact/server";
 import { HTTPFacilitatorClient, x402HTTPResourceServer } from "@x402/core/server";
 import { createFacilitatorConfig } from "@coinbase/x402";
+import { bazaarResourceServerExtension } from "@x402/extensions/bazaar";
 import { config } from "../config.js";
 import { buildRoutesConfig, NETWORKS } from "../services/registry.js";
 import { MegaETHFacilitatorClient } from "../facilitator/index.js";
@@ -34,6 +35,7 @@ export function createPaymentMiddleware(): RequestHandler {
   const megaethFacilitator = new MegaETHFacilitatorClient();
 
   const server = new x402ResourceServer([officialFacilitator, megaethFacilitator]);
+  server.registerExtension(bazaarResourceServerExtension);
 
   const evmNetwork = config.isDev ? NETWORKS.baseSepolia : NETWORKS.base;
   server.register(evmNetwork, new ExactEvmScheme());
