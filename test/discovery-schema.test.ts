@@ -58,8 +58,8 @@ describe("discovery request schemas", () => {
         required: ["role", "content"],
         additionalProperties: false,
         properties: {
-          role: { type: "string" },
-          content: { type: "string" },
+          role: { type: "string", example: "user" },
+          content: { type: "string", example: "Hello" },
         },
       },
     });

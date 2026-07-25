@@ -43,6 +43,7 @@ function inferSchema(value: unknown): Record<string, unknown> {
 
   return {
     type: value === null ? "string" : typeof value,
+    ...(value !== null ? { example: value } : {}),
   };
 }
 
