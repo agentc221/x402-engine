@@ -35,4 +35,10 @@ describe("discovery compatibility routes", () => {
     expect(mcpSource).toContain('message.method === "initialize"');
     expect(mcpSource).toContain('message.method === "tools/list"');
   });
+
+  it("scopes paid endpoint rate limits by IP and path for catalog crawlers", () => {
+    const rateLimitSource = readFileSync("src/middleware/rate-limit.ts", "utf8");
+    expect(rateLimitSource).toContain("ipKeyGenerator(req.ip ??");
+    expect(rateLimitSource).toContain(":${req.path}");
+  });
 });
