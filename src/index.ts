@@ -8,6 +8,11 @@ import { v4 as uuidv4 } from "uuid";
 import { config } from "./config.js";
 import { initDatabase, checkDatabase, getPoolStats, shutdownDatabase } from "./db/ledger.js";
 import { getAllServices, getService, buildRoutesConfig } from "./services/registry.js";
+import {
+  buildInputObjectSchema,
+  buildParameterSchema,
+  hasRequiredInput,
+} from "./services/schema.js";
 import { MEGAETH_CONFIG, BASE_CONFIG, BASE_SEPOLIA_CONFIG } from "./config/chains.js";
 import { createPaymentMiddleware, devBypassMiddleware } from "./middleware/x402.js";
 import { megaethPaymentMiddleware } from "./middleware/payment.js";
@@ -268,15 +273,6 @@ function buildOpenApiResponse() {
   const services = getAllServices();
   const routes = buildRoutesConfig() as Record<string, any>;
 
-  const toSchema = (param: any) => ({
-    type: ["string", "number", "integer", "boolean", "array", "object"].includes(param?.type)
-      ? param.type
-      : "string",
-    description: param?.description,
-    example: param?.example,
-    default: param?.default,
-  });
-
   const paths: Record<string, any> = {
     "/health": {
       get: {
@@ -320,11 +316,9 @@ function buildOpenApiResponse() {
     const method = service.method.toLowerCase();
     const bodyParams = service.parameters?.body ?? {};
     const queryParams = service.parameters?.query ?? {};
+    const bodyRequiredAnyOf = service.parameters?.bodyRequiredAnyOf ?? [];
     const routeKey = `${service.method} ${service.path}`;
-    const requestBodyRequired = Object.values(bodyParams).some((param: any) => param?.required);
-    const requiredBodyFields = Object.entries(bodyParams)
-      .filter(([, param]: any) => param?.required)
-      .map(([name]) => name);
+    const requestBodyRequired = hasRequiredInput(bodyParams, bodyRequiredAnyOf);
 
     const operation: Record<string, any> = {
       summary: service.method === "GET"
@@ -347,7 +341,7 @@ function buildOpenApiResponse() {
       in: "query",
       required: Boolean(param?.required),
       description: param?.description,
-      schema: toSchema(param),
+      schema: buildParameterSchema(param),
       example: param?.example,
     }));
     if (parameters.length) {
@@ -359,13 +353,7 @@ function buildOpenApiResponse() {
         required: requestBodyRequired,
         content: {
           "application/json": {
-            schema: {
-              type: "object",
-              properties: Object.fromEntries(
-                Object.entries(bodyParams).map(([name, param]) => [name, toSchema(param)]),
-              ),
-              required: requiredBodyFields,
-            },
+            schema: buildInputObjectSchema(bodyParams, bodyRequiredAnyOf),
           },
         },
       };

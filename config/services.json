@@ -546,7 +546,15 @@
             "description": "MIME type when using audio_base64 (e.g. audio/mp3, audio/wav)",
             "example": "audio/mp3"
           }
-        }
+        },
+        "bodyRequiredAnyOf": [
+          [
+            "audio_url"
+          ],
+          [
+            "audio_base64"
+          ]
+        ]
       },
       "cost": "$0.02"
     },
@@ -2389,12 +2397,22 @@
             "type": "array",
             "required": false,
             "description": "Array of texts to embed (1-100)",
+            "minItems": 1,
+            "maxItems": 100,
             "example": [
               "hello",
               "world"
             ]
           }
-        }
+        },
+        "bodyRequiredAnyOf": [
+          [
+            "text"
+          ],
+          [
+            "texts"
+          ]
+        ]
       },
       "cost": "$0.0001"
     },
