@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>x402engine — Pay-per-call APIs for AI Agents</title>
-  <meta name="description" content="104 production APIs behind HTTP 402 micropayments. 72 LLMs, image generation, face swap, code execution, travel search, web scraping, TTS, and transaction simulation. Pay with USDC on Base, USDm on MegaETH, or USDC on Solana. No API keys, no subscriptions — just stablecoins.">
+  <meta name="description" content="108 production APIs behind HTTP 402 micropayments. 72 LLMs, Kling V3 and Hailuo video generation, image generation, code execution, travel search, web scraping, TTS, and transaction simulation. Pay with USDC on Base, USDm on MegaETH, or USDC on Solana.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -60,7 +60,7 @@
     <div class="max-w-4xl mx-auto px-6 text-center">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-600/10 border border-brand-500/20 text-brand-400 text-xs font-medium mb-6">
         <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        104 APIs live — 72 LLMs
+        108 APIs live — 72 LLMs
       </div>
       <h1 class="text-4xl sm:text-6xl font-bold text-white leading-tight mb-6">
         Pay-per-call APIs<br>
@@ -214,7 +214,7 @@ registerExactEvmScheme(client, { signer: account, networks: [<span class="text-a
   <section id="services" class="py-20 bg-surface-900/50">
     <div class="max-w-6xl mx-auto px-6">
       <div class="text-center mb-12">
-        <h2 class="text-3xl font-bold text-white mb-3">104 APIs, 5 categories</h2>
+        <h2 class="text-3xl font-bold text-white mb-3">108 APIs, 5 categories</h2>
         <p class="text-gray-400 max-w-xl mx-auto">Production-grade endpoints backed by best-in-class providers. All priced for micropayments.</p>
       </div>
 
@@ -575,6 +575,38 @@ registerExactEvmScheme(client, { signer: account, networks: [<span class="text-a
             </div>
             <p class="text-gray-500 text-sm mb-3">Google's fast image gen with aspect ratio control</p>
             <code class="text-xs text-gray-600 font-mono">POST /api/image/nano-banana</code>
+          </div>
+          <div class="card-glow rounded-xl p-5 transition">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-white font-medium">Fast Video</h3>
+              <span class="price-tag text-brand-400 text-sm font-mono">$0.55</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-3">Kling V3 Standard, fixed 5-second clip</p>
+            <code class="text-xs text-gray-600 font-mono">POST /api/video/fast</code>
+          </div>
+          <div class="card-glow rounded-xl p-5 transition">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-white font-medium">Quality Video</h3>
+              <span class="price-tag text-brand-400 text-sm font-mono">$0.70</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-3">Kling V3 Pro, production-quality motion</p>
+            <code class="text-xs text-gray-600 font-mono">POST /api/video/quality</code>
+          </div>
+          <div class="card-glow rounded-xl p-5 transition">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-white font-medium">Hailuo Video</h3>
+              <span class="price-tag text-brand-400 text-sm font-mono">$0.65</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-3">MiniMax Hailuo 2.3 Pro at 1080p</p>
+            <code class="text-xs text-gray-600 font-mono">POST /api/video/hailuo</code>
+          </div>
+          <div class="card-glow rounded-xl p-5 transition">
+            <div class="flex items-start justify-between mb-2">
+              <h3 class="text-white font-medium">Image Animation</h3>
+              <span class="price-tag text-brand-400 text-sm font-mono">$0.70</span>
+            </div>
+            <p class="text-gray-500 text-sm mb-3">Animate a still image with Kling V3 Pro</p>
+            <code class="text-xs text-gray-600 font-mono">POST /api/video/animate</code>
           </div>
           <div class="card-glow rounded-xl p-5 transition">
             <div class="flex items-start justify-between mb-2">

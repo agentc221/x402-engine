@@ -3,7 +3,7 @@
   "manifest_path": "manifest/agent-manifest.v1.json",
   "hash": {
     "algorithm": "sha256",
-    "value": "47ffddbfcb2116a3ae684d7c20cf47ff82e796f8bb0bce3caa95925a3b1f09ae"
+    "value": "a8a4b7315da8c38570940690b68730a3c9ffdb6447d6a42a11002bf21b01920c"
   },
   "signature": {
     "algorithm": "ed25519",

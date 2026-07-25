@@ -179,10 +179,12 @@ export async function generateLuxTTS(req: LuxTTSRequest): Promise<LuxTTSResponse
 export interface VideoGenerationRequest {
   prompt: string;
   modelId: string;
-  duration?: string;        // "5" | "10" (Kling)
-  aspect_ratio?: string;    // "16:9" | "9:16" | "1:1" (Kling)
-  image_url?: string;       // for image-to-video
+  duration?: string;
+  aspect_ratio?: string;
+  start_image_url?: string;
   negative_prompt?: string;
+  generate_audio?: boolean;
+  prompt_optimizer?: boolean;
 }
 
 export interface VideoGenerationResponse {
@@ -202,8 +204,10 @@ export async function generateVideo(req: VideoGenerationRequest): Promise<VideoG
   const input: Record<string, any> = { prompt: req.prompt };
   if (req.duration) input.duration = req.duration;
   if (req.aspect_ratio) input.aspect_ratio = req.aspect_ratio;
-  if (req.image_url) input.image_url = req.image_url;
+  if (req.start_image_url) input.start_image_url = req.start_image_url;
   if (req.negative_prompt) input.negative_prompt = req.negative_prompt;
+  if (req.generate_audio !== undefined) input.generate_audio = req.generate_audio;
+  if (req.prompt_optimizer !== undefined) input.prompt_optimizer = req.prompt_optimizer;
 
   const start = Date.now();
 
@@ -211,6 +215,10 @@ export async function generateVideo(req: VideoGenerationRequest): Promise<VideoG
   const data = result.data as any;
 
   const video = data.video || {};
+  if (!video.url || typeof video.url !== "string") {
+    throw Object.assign(new Error("fal.ai returned no video URL"), { status: 502 });
+  }
+
   return {
     video: {
       url: video.url,

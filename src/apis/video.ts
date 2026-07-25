@@ -1,52 +1,66 @@
 import { Router, type Request, type Response } from "express";
 import { generateVideo } from "../providers/fal.js";
 import { logRequest } from "../db/ledger.js";
+import { isPublicUrl } from "../lib/validation.js";
 
 const router = Router();
 
 interface VideoModelConfig {
   modelId: string;
   serviceId: string;
-  supportsI2V?: boolean;       // image-to-video
-  supportsDuration?: boolean;  // 5 or 10 sec
-  supportsAspectRatio?: boolean;
+  fixedDuration?: string;
+  aspectRatios?: readonly string[];
+  requiresStartImage?: boolean;
+  supportsNegativePrompt?: boolean;
+  generateAudio?: boolean;
+  promptOptimizer?: boolean;
 }
 
-const MODELS: Record<string, VideoModelConfig> = {
+export const VIDEO_MODELS: Record<string, VideoModelConfig> = {
   fast: {
-    modelId: "fal-ai/kling-video/v1.6/standard/text-to-video",
+    modelId: "fal-ai/kling-video/v3/standard/text-to-video",
     serviceId: "video-fast",
-    supportsDuration: true,
-    supportsAspectRatio: true,
+    fixedDuration: "5",
+    aspectRatios: ["16:9", "9:16", "1:1"],
+    supportsNegativePrompt: true,
+    generateAudio: false,
   },
   quality: {
-    modelId: "fal-ai/kling-video/v2.6/pro/text-to-video",
+    modelId: "fal-ai/kling-video/v3/pro/text-to-video",
     serviceId: "video-quality",
-    supportsDuration: true,
-    supportsAspectRatio: true,
+    fixedDuration: "5",
+    aspectRatios: ["16:9", "9:16", "1:1"],
+    supportsNegativePrompt: true,
+    generateAudio: false,
   },
   hailuo: {
-    modelId: "fal-ai/minimax/hailuo-02/pro/text-to-video",
+    modelId: "fal-ai/minimax/hailuo-2.3/pro/text-to-video",
     serviceId: "video-hailuo",
+    promptOptimizer: true,
   },
   animate: {
-    modelId: "fal-ai/kling-video/v2.6/pro/image-to-video",
+    modelId: "fal-ai/kling-video/v3/pro/image-to-video",
     serviceId: "video-animate",
-    supportsI2V: true,
-    supportsDuration: true,
-    supportsAspectRatio: true,
+    fixedDuration: "5",
+    requiresStartImage: true,
+    supportsNegativePrompt: true,
+    generateAudio: false,
   },
 };
 
-const VALID_DURATIONS = ["5", "10"];
-const VALID_ASPECT_RATIOS = ["16:9", "9:16", "1:1"];
-
 function videoHandler(slug: string) {
-  const cfg = MODELS[slug];
+  const cfg = VIDEO_MODELS[slug];
   const endpoint = `/api/video/${slug}`;
 
   return async (req: Request, res: Response) => {
-    const { prompt, duration, aspect_ratio, image_url, negative_prompt } = req.body || {};
+    const {
+      prompt,
+      duration,
+      aspect_ratio,
+      image_url,
+      negative_prompt,
+      generate_audio,
+    } = req.body || {};
 
     if (!prompt || typeof prompt !== "string") {
       res.status(400).json({ error: "prompt is required (string)" });
@@ -57,18 +71,55 @@ function videoHandler(slug: string) {
       return;
     }
 
-    if (cfg.supportsI2V && !image_url) {
-      res.status(400).json({ error: "image_url is required for image-to-video" });
+    if (cfg.requiresStartImage && (!image_url || typeof image_url !== "string")) {
+      res.status(400).json({ error: "image_url is required (string) for image-to-video" });
       return;
     }
 
-    if (duration && (!cfg.supportsDuration || !VALID_DURATIONS.includes(duration))) {
-      res.status(400).json({ error: `duration must be ${VALID_DURATIONS.join(" or ")} seconds` });
+    if (duration !== undefined && (!cfg.fixedDuration || String(duration) !== cfg.fixedDuration)) {
+      res.status(400).json({
+        error: cfg.fixedDuration
+          ? `duration is fixed at ${cfg.fixedDuration} seconds for this endpoint`
+          : "duration is not configurable for this endpoint",
+      });
       return;
     }
-    if (aspect_ratio && (!cfg.supportsAspectRatio || !VALID_ASPECT_RATIOS.includes(aspect_ratio))) {
-      res.status(400).json({ error: `aspect_ratio must be ${VALID_ASPECT_RATIOS.join(", ")}` });
+    if (
+      aspect_ratio !== undefined &&
+      (!cfg.aspectRatios || typeof aspect_ratio !== "string" || !cfg.aspectRatios.includes(aspect_ratio))
+    ) {
+      res.status(400).json({
+        error: cfg.aspectRatios
+          ? `aspect_ratio must be ${cfg.aspectRatios.join(", ")}`
+          : "aspect_ratio is not configurable for this endpoint",
+      });
       return;
+    }
+    if (negative_prompt !== undefined && (!cfg.supportsNegativePrompt || typeof negative_prompt !== "string")) {
+      res.status(400).json({
+        error: cfg.supportsNegativePrompt
+          ? "negative_prompt must be a string"
+          : "negative_prompt is not supported for this endpoint",
+      });
+      return;
+    }
+    if (generate_audio !== undefined && generate_audio !== cfg.generateAudio) {
+      res.status(400).json({
+        error: cfg.generateAudio
+          ? "generate_audio is fixed to true for this endpoint"
+          : "generate_audio is fixed to false for this endpoint",
+      });
+      return;
+    }
+
+    let startImageUrl: string | undefined;
+    if (cfg.requiresStartImage) {
+      const checked = await isPublicUrl(image_url);
+      if (!checked.valid) {
+        res.status(400).json({ error: `image_url: ${checked.reason}` });
+        return;
+      }
+      startImageUrl = checked.url;
     }
 
     const start = Date.now();
@@ -78,10 +129,12 @@ function videoHandler(slug: string) {
       const result = await generateVideo({
         prompt,
         modelId: cfg.modelId,
-        duration: cfg.supportsDuration ? (duration || "5") : undefined,
-        aspect_ratio: cfg.supportsAspectRatio ? (aspect_ratio || "16:9") : undefined,
-        image_url: cfg.supportsI2V ? image_url : undefined,
-        negative_prompt,
+        duration: cfg.fixedDuration,
+        aspect_ratio: cfg.aspectRatios ? (aspect_ratio || "16:9") : undefined,
+        start_image_url: startImageUrl,
+        negative_prompt: cfg.supportsNegativePrompt ? negative_prompt : undefined,
+        generate_audio: cfg.generateAudio,
+        prompt_optimizer: cfg.promptOptimizer,
       });
       upstreamStatus = 200;
       res.json(result);
@@ -108,7 +161,7 @@ function videoHandler(slug: string) {
   };
 }
 
-for (const slug of Object.keys(MODELS)) {
+for (const slug of Object.keys(VIDEO_MODELS)) {
   router.post(`/api/video/${slug}`, videoHandler(slug));
 }
 

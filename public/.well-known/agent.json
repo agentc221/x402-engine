@@ -1,6 +1,6 @@
 {
   "name": "x402engine",
-  "description": "Pay-per-call API gateway for AI agents. 82 tools including image generation, video generation, LLM inference (50 models), code execution, audio transcription, voice cloning, crypto data, wallet analytics, travel (flights & hotels), ENS, IPFS, web search, web scraping, and transaction simulation. All via HTTP 402 micropayments with USDC and USDm.",
+  "description": "Pay-per-call API gateway for AI agents. 108 tools including image and video generation, LLM inference (72 models), code execution, audio transcription, voice cloning, crypto data, wallet analytics, travel, ENS, IPFS, web search, web scraping, and transaction simulation. All via HTTP 402 micropayments with USDC and USDm.",
   "url": "https://x402-gateway-production.up.railway.app",
   "version": "3.0.0",
   "protocol": "a2a",
@@ -24,14 +24,14 @@
     {
       "id": "video-generation",
       "name": "Video Generation",
-      "description": "Generate videos from text (Kling, Hailuo) or animate images. Fast ($0.30), quality ($0.50), and premium ($0.60) tiers plus image-to-video ($0.50).",
+      "description": "Generate videos from text with Kling V3 Standard ($0.55), Kling V3 Pro ($0.70), or Hailuo 2.3 Pro ($0.65), and animate images with Kling V3 Pro ($0.70).",
       "tags": ["video", "generation", "ai", "kling", "hailuo"],
       "examples": ["Generate a video of a cat walking on a beach", "Animate this image into a video"]
     },
     {
       "id": "llm-inference",
       "name": "LLM Inference",
-      "description": "Access 50 LLM models including GPT-5.4/5.4 Pro/5.3 Codex, GPT-5 Nano, o4-mini, Claude Opus 4.8/4.6/4.5, Claude Sonnet 4.6, Gemini 3.1 Pro/Flash Lite, DeepSeek V4 Pro/Flash, Qwen 3.7 Max/Plus, GLM 5.2, MiniMax M3/M2.7, Llama 4 Maverick, Cohere Command A, plus Grok, Kimi, Seed, Devstral, Mistral, Meta, Perplexity, and legacy OpenAI/Anthropic/Gemini routes. Prices: $0.002-$0.30 per request.",
+      "description": "Access 72 LLM models including GPT-5.6/5.4, Claude 5/4.8/4.6, Gemini 3.6/3.1, DeepSeek V4, Qwen 3.7, GLM 5.2, MiniMax M3, Kimi K3, Grok 4.5, and specialized coding and reasoning models. Prices: $0.002-$0.30 per request.",
       "tags": ["llm", "inference", "gpt", "claude", "gemini"],
       "examples": ["Ask GPT-5 to summarize this document", "Get Claude Opus to review this code"]
     },
