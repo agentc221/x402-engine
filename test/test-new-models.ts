@@ -7,9 +7,14 @@ import { wrapFetchWithPayment, x402Client } from "@x402/fetch";
 import { registerExactEvmScheme } from "@x402/evm/exact/client";
 
 const GATEWAY = process.env.GATEWAY_URL || "http://localhost:3402";
-const PRIVATE_KEY = "0xe4793e6d52a6d6883a6306c2dcdf1ba1eb408c72b5efa0cf1d2c710c7a74b958";
+const PRIVATE_KEY = process.env.EVM_PRIVATE_KEY;
 
-const account = privateKeyToAccount(PRIVATE_KEY);
+if (!PRIVATE_KEY || !/^0x[0-9a-fA-F]{64}$/.test(PRIVATE_KEY)) {
+  console.error("Set EVM_PRIVATE_KEY to a 32-byte 0x-prefixed private key");
+  process.exit(1);
+}
+
+const account = privateKeyToAccount(PRIVATE_KEY as `0x${string}`);
 console.log(`Payer: ${account.address}`);
 console.log(`Gateway: ${GATEWAY}\n`);
 
