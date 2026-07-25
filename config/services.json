@@ -2306,7 +2306,10 @@
             "type": "array",
             "required": false,
             "description": "Only include results from these domains",
-            "example": ["arxiv.org", "github.com"]
+            "example": [
+              "arxiv.org",
+              "github.com"
+            ]
           },
           "category": {
             "type": "string",
@@ -2343,7 +2346,9 @@
             "type": "array",
             "required": true,
             "description": "Array of URLs to fetch content from (max 10)",
-            "example": ["https://example.com/article"]
+            "example": [
+              "https://example.com/article"
+            ]
           }
         }
       },
@@ -2690,7 +2695,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2722,7 +2732,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2754,7 +2769,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2786,7 +2806,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2818,7 +2843,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2850,7 +2880,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2882,7 +2917,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2914,7 +2954,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2946,7 +2991,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -2978,7 +3028,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -3010,7 +3065,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -3042,7 +3102,12 @@
             "type": "array",
             "required": true,
             "description": "Array of message objects with role and content",
-            "example": [{ "role": "user", "content": "Hello" }]
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
           },
           "max_tokens": {
             "type": "number",
@@ -3054,6 +3119,820 @@
         }
       },
       "cost": "$0.001"
+    },
+    {
+      "id": "llm-gpt-5.6-luna",
+      "name": "GPT-5.6 Luna",
+      "description": "OpenAI's efficient GPT-5.6 tier with a 1M-token context window",
+      "price": "$0.02",
+      "method": "POST",
+      "path": "/api/llm/gpt-5.6-luna",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate (reasoning models use more)",
+            "example": 16384,
+            "default": 16384
+          }
+        }
+      },
+      "cost": "$0.008"
+    },
+    {
+      "id": "llm-gpt-5.6-luna-pro",
+      "name": "GPT-5.6 Luna Pro",
+      "description": "OpenAI's higher-compute Luna tier for efficient long-context reasoning",
+      "price": "$0.04",
+      "method": "POST",
+      "path": "/api/llm/gpt-5.6-luna-pro",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate (reasoning models use more)",
+            "example": 16384,
+            "default": 16384
+          }
+        }
+      },
+      "cost": "$0.012"
+    },
+    {
+      "id": "llm-gpt-5.6-terra",
+      "name": "GPT-5.6 Terra",
+      "description": "OpenAI's balanced GPT-5.6 tier for advanced reasoning and agent workflows",
+      "price": "$0.04",
+      "method": "POST",
+      "path": "/api/llm/gpt-5.6-terra",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate (reasoning models use more)",
+            "example": 16384,
+            "default": 16384
+          }
+        }
+      },
+      "cost": "$0.018"
+    },
+    {
+      "id": "llm-gpt-5.6-terra-pro",
+      "name": "GPT-5.6 Terra Pro",
+      "description": "OpenAI's higher-compute Terra tier for demanding reasoning workloads",
+      "price": "$0.10",
+      "method": "POST",
+      "path": "/api/llm/gpt-5.6-terra-pro",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate (reasoning models use more)",
+            "example": 16384,
+            "default": 16384
+          }
+        }
+      },
+      "cost": "$0.04"
+    },
+    {
+      "id": "llm-gpt-5.6-sol",
+      "name": "GPT-5.6 Sol",
+      "description": "OpenAI's flagship GPT-5.6 tier for complex analysis, coding, and planning",
+      "price": "$0.08",
+      "method": "POST",
+      "path": "/api/llm/gpt-5.6-sol",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate (reasoning models use more)",
+            "example": 16384,
+            "default": 16384
+          }
+        }
+      },
+      "cost": "$0.035"
+    },
+    {
+      "id": "llm-gpt-5.6-sol-pro",
+      "name": "GPT-5.6 Sol Pro",
+      "description": "OpenAI's maximum-compute GPT-5.6 tier for the hardest agent tasks",
+      "price": "$0.20",
+      "method": "POST",
+      "path": "/api/llm/gpt-5.6-sol-pro",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate (reasoning models use more)",
+            "example": 16384,
+            "default": 16384
+          }
+        }
+      },
+      "cost": "$0.08"
+    },
+    {
+      "id": "llm-claude-opus-5",
+      "name": "Claude Opus 5",
+      "description": "Anthropic's flagship model with 1M context for coding, analysis, and autonomous work",
+      "price": "$0.07",
+      "method": "POST",
+      "path": "/api/llm/claude-opus-5",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.035"
+    },
+    {
+      "id": "llm-claude-opus-5-fast",
+      "name": "Claude Opus 5 Fast",
+      "description": "Low-latency Claude Opus 5 delivery for premium interactive workloads",
+      "price": "$0.12",
+      "method": "POST",
+      "path": "/api/llm/claude-opus-5-fast",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.065"
+    },
+    {
+      "id": "llm-claude-sonnet-5",
+      "name": "Claude Sonnet 5",
+      "description": "Anthropic's balanced frontier model with 1M context and strong coding performance",
+      "price": "$0.03",
+      "method": "POST",
+      "path": "/api/llm/claude-sonnet-5",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.015"
+    },
+    {
+      "id": "llm-gemini-3.6-flash",
+      "name": "Gemini 3.6 Flash",
+      "description": "Google's latest fast multimodal model with a 1M-token context window",
+      "price": "$0.02",
+      "method": "POST",
+      "path": "/api/llm/gemini-3.6-flash",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.01"
+    },
+    {
+      "id": "llm-gemini-3.5-flash-lite",
+      "name": "Gemini 3.5 Flash Lite",
+      "description": "Google's low-cost multimodal model for high-volume agent workloads",
+      "price": "$0.006",
+      "method": "POST",
+      "path": "/api/llm/gemini-3.5-flash-lite",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.003"
+    },
+    {
+      "id": "llm-kimi-k3",
+      "name": "Kimi K3",
+      "description": "MoonshotAI's frontier multimodal model with 1M context for agentic tasks",
+      "price": "$0.04",
+      "method": "POST",
+      "path": "/api/llm/kimi-k3",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.02"
+    },
+    {
+      "id": "llm-grok-4.5",
+      "name": "Grok 4.5",
+      "description": "xAI's latest multimodal model with 500k context and strong tool use",
+      "price": "$0.03",
+      "method": "POST",
+      "path": "/api/llm/grok-4.5",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.008"
+    },
+    {
+      "id": "llm-kat-coder-air-v2.5",
+      "name": "KAT-Coder-Air V2.5",
+      "description": "Kwaipilot's efficient coding model for repository and agent workflows",
+      "price": "$0.003",
+      "method": "POST",
+      "path": "/api/llm/kat-coder-air-v2.5",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.0008"
+    },
+    {
+      "id": "llm-kat-coder-pro-v2.5",
+      "name": "KAT-Coder-Pro V2.5",
+      "description": "Kwaipilot's stronger coding model for complex software engineering tasks",
+      "price": "$0.008",
+      "method": "POST",
+      "path": "/api/llm/kat-coder-pro-v2.5",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.0035"
+    },
+    {
+      "id": "llm-longcat-2",
+      "name": "LongCat 2.0",
+      "description": "Meituan's long-context model for reasoning, coding, and high-volume inference",
+      "price": "$0.005",
+      "method": "POST",
+      "path": "/api/llm/longcat-2",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.0015"
+    },
+    {
+      "id": "llm-inkling",
+      "name": "Inkling",
+      "description": "Thinking Machines' multimodal model for text, image, and audio understanding",
+      "price": "$0.012",
+      "method": "POST",
+      "path": "/api/llm/inkling",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.005"
+    },
+    {
+      "id": "llm-muse-spark-1.1",
+      "name": "Muse Spark 1.1",
+      "description": "Meta's broad multimodal model with 1M context for media-rich agent workflows",
+      "price": "$0.012",
+      "method": "POST",
+      "path": "/api/llm/muse-spark-1.1",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.006"
+    },
+    {
+      "id": "llm-aion-3.0",
+      "name": "Aion 3.0",
+      "description": "AionLabs' full reasoning model for analysis and structured generation",
+      "price": "$0.012",
+      "method": "POST",
+      "path": "/api/llm/aion-3.0",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.005"
+    },
+    {
+      "id": "llm-aion-3.0-mini",
+      "name": "Aion 3.0 Mini",
+      "description": "AionLabs' compact reasoning model for efficient general-purpose inference",
+      "price": "$0.004",
+      "method": "POST",
+      "path": "/api/llm/aion-3.0-mini",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.0015"
+    },
+    {
+      "id": "llm-hy3",
+      "name": "Tencent HY3",
+      "description": "Tencent's efficient reasoning model with a 262k-token context window",
+      "price": "$0.003",
+      "method": "POST",
+      "path": "/api/llm/hy3",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0.0007"
+    },
+    {
+      "id": "llm-ling-3-flash",
+      "name": "Ling 3.0 Flash",
+      "description": "InclusionAI's fast open model for low-cost reasoning and tool use",
+      "price": "$0.002",
+      "method": "POST",
+      "path": "/api/llm/ling-3-flash",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 1024,
+            "default": 1024
+          }
+        }
+      },
+      "cost": "$0"
     }
   ]
 }

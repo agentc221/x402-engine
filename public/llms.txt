@@ -1,8 +1,8 @@
 # x402engine
-> Pay-per-call API gateway for AI agents. 82 tools, sub-cent pricing, instant crypto payments.
+> Pay-per-call API gateway for AI agents. 104 tools, sub-cent pricing, instant crypto payments.
 
 ## What is this?
-x402engine is an API gateway that provides 82 pay-per-call tools for AI agents using the HTTP 402 payment protocol. Every API call costs between $0.001 and $0.12, paid instantly with stablecoins (USDC on Base, USDC on Solana, or USDm on MegaETH).
+x402engine is an API gateway that provides 104 pay-per-call tools for AI agents using the HTTP 402 payment protocol. Every API call costs between $0.001 and $0.30, paid instantly with stablecoins (USDC on Base, USDC on Solana, or USDm on MegaETH).
 
 ## How to connect
 - MCP server (recommended): `npx -y x402engine-mcp`
@@ -31,7 +31,7 @@ x402engine is an API gateway that provides 82 pay-per-call tools for AI agents u
 - text_to_speech (ElevenLabs): $0.02 — Text-to-speech via ElevenLabs
 - voice_clone_tts (Lux): $0.02 — Voice-cloning TTS at 48kHz; requires `audio_url` reference clip
 
-### LLM Inference (50 models)
+### LLM Inference (72 models)
 - GPT-4o: $0.04 — `/api/llm/gpt-4o`
 - GPT-4o Mini: $0.003 — `/api/llm/gpt-4o-mini`
 - OpenAI o1: $0.03 — `/api/llm/o1`
@@ -82,6 +82,28 @@ x402engine is an API gateway that provides 82 pay-per-call tools for AI agents u
 - DeepSeek V4 Flash: $0.003 — `/api/llm/deepseek-v4-flash`
 - DeepSeek V4 Pro: $0.006 — `/api/llm/deepseek-v4-pro`
 - MiniMax M3: $0.01 — `/api/llm/minimax-m3`
+- GPT-5.6 Luna: $0.02 — `/api/llm/gpt-5.6-luna`
+- GPT-5.6 Luna Pro: $0.04 — `/api/llm/gpt-5.6-luna-pro`
+- GPT-5.6 Terra: $0.04 — `/api/llm/gpt-5.6-terra`
+- GPT-5.6 Terra Pro: $0.10 — `/api/llm/gpt-5.6-terra-pro`
+- GPT-5.6 Sol: $0.08 — `/api/llm/gpt-5.6-sol`
+- GPT-5.6 Sol Pro: $0.20 — `/api/llm/gpt-5.6-sol-pro`
+- Claude Opus 5: $0.07 — `/api/llm/claude-opus-5`
+- Claude Opus 5 Fast: $0.12 — `/api/llm/claude-opus-5-fast`
+- Claude Sonnet 5: $0.03 — `/api/llm/claude-sonnet-5`
+- Gemini 3.6 Flash: $0.02 — `/api/llm/gemini-3.6-flash`
+- Gemini 3.5 Flash Lite: $0.006 — `/api/llm/gemini-3.5-flash-lite`
+- Kimi K3: $0.04 — `/api/llm/kimi-k3`
+- Grok 4.5: $0.03 — `/api/llm/grok-4.5`
+- KAT-Coder-Air V2.5: $0.003 — `/api/llm/kat-coder-air-v2.5`
+- KAT-Coder-Pro V2.5: $0.008 — `/api/llm/kat-coder-pro-v2.5`
+- LongCat 2.0: $0.005 — `/api/llm/longcat-2`
+- Inkling: $0.012 — `/api/llm/inkling`
+- Muse Spark 1.1: $0.012 — `/api/llm/muse-spark-1.1`
+- Aion 3.0: $0.012 — `/api/llm/aion-3.0`
+- Aion 3.0 Mini: $0.004 — `/api/llm/aion-3.0-mini`
+- Tencent HY3: $0.003 — `/api/llm/hy3`
+- Ling 3.0 Flash: $0.002 — `/api/llm/ling-3-flash`
 - Text Embeddings: $0.001 — `/api/embeddings`
 
 ### Crypto & Market Data

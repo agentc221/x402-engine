@@ -91,6 +91,35 @@ const MODELS: Record<string, ModelConfig> = {
   "command-a": { model: "cohere/command-a", serviceId: "llm-command-a" },
   // Zhipu
   "glm-5.2": { model: "z-ai/glm-5.2", serviceId: "llm-glm-5.2", reasoning: true },
+  // OpenAI (GPT-5.6)
+  "gpt-5.6-luna": { model: "openai/gpt-5.6-luna", serviceId: "llm-gpt-5.6-luna", reasoning: true },
+  "gpt-5.6-luna-pro": { model: "openai/gpt-5.6-luna-pro", serviceId: "llm-gpt-5.6-luna-pro", reasoning: true },
+  "gpt-5.6-terra": { model: "openai/gpt-5.6-terra", serviceId: "llm-gpt-5.6-terra", reasoning: true },
+  "gpt-5.6-terra-pro": { model: "openai/gpt-5.6-terra-pro", serviceId: "llm-gpt-5.6-terra-pro", reasoning: true },
+  "gpt-5.6-sol": { model: "openai/gpt-5.6-sol", serviceId: "llm-gpt-5.6-sol", reasoning: true },
+  "gpt-5.6-sol-pro": { model: "openai/gpt-5.6-sol-pro", serviceId: "llm-gpt-5.6-sol-pro", reasoning: true },
+  // Anthropic (Claude 5)
+  "claude-opus-5": { model: "anthropic/claude-opus-5", serviceId: "llm-claude-opus-5" },
+  "claude-opus-5-fast": { model: "anthropic/claude-opus-5-fast", serviceId: "llm-claude-opus-5-fast" },
+  "claude-sonnet-5": { model: "anthropic/claude-sonnet-5", serviceId: "llm-claude-sonnet-5" },
+  // Google
+  "gemini-3.6-flash": { model: "google/gemini-3.6-flash", serviceId: "llm-gemini-3.6-flash" },
+  "gemini-3.5-flash-lite": { model: "google/gemini-3.5-flash-lite", serviceId: "llm-gemini-3.5-flash-lite" },
+  // Moonshot
+  "kimi-k3": { model: "moonshotai/kimi-k3", serviceId: "llm-kimi-k3" },
+  // xAI
+  "grok-4.5": { model: "x-ai/grok-4.5", serviceId: "llm-grok-4.5" },
+  // Coding
+  "kat-coder-air-v2.5": { model: "kwaipilot/kat-coder-air-v2.5", serviceId: "llm-kat-coder-air-v2.5" },
+  "kat-coder-pro-v2.5": { model: "kwaipilot/kat-coder-pro-v2.5", serviceId: "llm-kat-coder-pro-v2.5" },
+  // Additional frontier and open models
+  "longcat-2": { model: "meituan/longcat-2.0", serviceId: "llm-longcat-2" },
+  "inkling": { model: "thinkingmachines/inkling", serviceId: "llm-inkling" },
+  "muse-spark-1.1": { model: "meta/muse-spark-1.1", serviceId: "llm-muse-spark-1.1" },
+  "aion-3.0": { model: "aion-labs/aion-3.0", serviceId: "llm-aion-3.0" },
+  "aion-3.0-mini": { model: "aion-labs/aion-3.0-mini", serviceId: "llm-aion-3.0-mini" },
+  "hy3": { model: "tencent/hy3", serviceId: "llm-hy3" },
+  "ling-3-flash": { model: "inclusionai/ling-3.0-flash:free", serviceId: "llm-ling-3-flash" },
 };
 
 // Reasoning models burn tokens on chain-of-thought before generating content.
