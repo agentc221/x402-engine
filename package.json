@@ -14,7 +14,8 @@
     "manifest:generate": "node scripts/generate-agent-manifest.mjs",
     "manifest:validate": "node scripts/validate-agent-manifest.mjs",
     "manifest:hash-sign": "node scripts/hash-sign-agent-manifest.mjs",
-    "manifest:all": "npm run manifest:generate && npm run manifest:validate && npm run manifest:hash-sign"
+    "manifest:all": "npm run manifest:generate && npm run manifest:validate && npm run manifest:hash-sign",
+    "directory:x402jobs": "node scripts/sync-x402-jobs.mjs"
   },
   "dependencies": {
     "@coinbase/x402": "^2.1.0",
