@@ -280,7 +280,7 @@ function buildOpenApiResponse() {
   const paths: Record<string, any> = {
     "/health": {
       get: {
-        summary: "Health check",
+        summary: "Check x402engine service health",
         tags: ["discovery"],
         responses: {
           "200": { description: "Service is healthy" },
@@ -289,7 +289,7 @@ function buildOpenApiResponse() {
     },
     "/.well-known/x402.json": {
       get: {
-        summary: "x402 service discovery",
+        summary: "Fetch x402 service discovery catalog",
         tags: ["discovery"],
         responses: {
           "200": { description: "Machine-readable x402 service catalog" },
@@ -298,7 +298,7 @@ function buildOpenApiResponse() {
     },
     "/.well-known/x402": {
       get: {
-        summary: "x402 service discovery alias",
+        summary: "Fetch x402 service discovery alias",
         tags: ["discovery"],
         responses: {
           "200": { description: "Machine-readable x402 service catalog" },
@@ -307,7 +307,7 @@ function buildOpenApiResponse() {
     },
     "/api/services": {
       get: {
-        summary: "List services",
+        summary: "List available x402engine services",
         tags: ["discovery"],
         responses: {
           "200": { description: "Available x402engine services" },
@@ -327,7 +327,9 @@ function buildOpenApiResponse() {
       .map(([name]) => name);
 
     const operation: Record<string, any> = {
-      summary: service.name,
+      summary: service.method === "GET"
+        ? `Fetch ${service.name} from x402engine`
+        : `Run ${service.name} through x402engine`,
       description: service.description,
       tags: [service.category || "services"],
       "x-service-id": service.id,
