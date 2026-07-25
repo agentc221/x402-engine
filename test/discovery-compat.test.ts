@@ -40,5 +40,6 @@ describe("discovery compatibility routes", () => {
     const rateLimitSource = readFileSync("src/middleware/rate-limit.ts", "utf8");
     expect(rateLimitSource).toContain("ipKeyGenerator(req.ip ??");
     expect(rateLimitSource).toContain(":${req.path}");
+    expect(rateLimitSource.match(/keyGenerator: ipAndPathKey/g)).toHaveLength(2);
   });
 });

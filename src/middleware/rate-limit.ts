@@ -1,5 +1,9 @@
 import rateLimit, { ipKeyGenerator } from "express-rate-limit";
-import type { RequestHandler } from "express";
+import type { Request, RequestHandler } from "express";
+
+function ipAndPathKey(req: Request): string {
+  return `${ipKeyGenerator(req.ip ?? req.socket.remoteAddress ?? "unknown")}:${req.path}`;
+}
 
 /**
  * Strict rate limit for free endpoints (health, discovery, facilitator).
@@ -8,6 +12,7 @@ import type { RequestHandler } from "express";
 export const freeEndpointLimiter: RequestHandler = rateLimit({
   windowMs: 60_000,
   limit: 60,
+  keyGenerator: ipAndPathKey,
   standardHeaders: "draft-7",
   legacyHeaders: false,
   message: { error: "Too many requests — try again later" },
@@ -22,8 +27,7 @@ export const freeEndpointLimiter: RequestHandler = rateLimit({
 export const paidEndpointLimiter: RequestHandler = rateLimit({
   windowMs: 60_000,
   limit: 300,
-  keyGenerator: (req) =>
-    `${ipKeyGenerator(req.ip ?? req.socket.remoteAddress ?? "unknown")}:${req.path}`,
+  keyGenerator: ipAndPathKey,
   standardHeaders: "draft-7",
   legacyHeaders: false,
   message: { error: "Too many requests — try again later" },
