@@ -53,6 +53,7 @@ const MODELS: Record<string, ModelConfig> = {
   // DeepSeek (newer)
   "deepseek-v3.2": { model: "deepseek/deepseek-v3.2", serviceId: "llm-deepseek-v3.2" },
   "deepseek-v4-flash": { model: "deepseek/deepseek-v4-flash", serviceId: "llm-deepseek-v4-flash", reasoning: true },
+  "deepseek-v4-flash-0731": { model: "deepseek/deepseek-v4-flash-0731", serviceId: "llm-deepseek-v4-flash-0731", reasoning: true },
   "deepseek-v4-pro": { model: "deepseek/deepseek-v4-pro", serviceId: "llm-deepseek-v4-pro", reasoning: true },
   // Google (newer)
   "gemini-3-pro": { model: "google/gemini-3.1-pro-preview", serviceId: "llm-gemini-3-pro", reasoning: true },

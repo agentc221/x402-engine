@@ -3245,6 +3245,43 @@
       "cost": "$0.0005"
     },
     {
+      "id": "llm-deepseek-v4-flash-0731",
+      "name": "DeepSeek V4 Flash 0731",
+      "description": "DeepSeek's re-post-trained V4 Flash revision — substantially enhanced agentic capabilities, coding, and reasoning with 1M context",
+      "price": "$0.003",
+      "method": "POST",
+      "path": "/api/llm/deepseek-v4-flash-0731",
+      "mimeType": "application/json",
+      "category": "compute",
+      "upstream": {
+        "provider": "openrouter",
+        "baseUrl": "https://openrouter.ai/api/v1"
+      },
+      "parameters": {
+        "body": {
+          "messages": {
+            "type": "array",
+            "required": true,
+            "description": "Array of message objects with role and content",
+            "example": [
+              {
+                "role": "user",
+                "content": "Hello"
+              }
+            ]
+          },
+          "max_tokens": {
+            "type": "number",
+            "required": false,
+            "description": "Maximum tokens to generate",
+            "example": 16384,
+            "default": 16384
+          }
+        }
+      },
+      "cost": "$0.0005"
+    },
+    {
       "id": "llm-deepseek-v4-pro",
       "name": "DeepSeek V4 Pro",
       "description": "DeepSeek's stronger V4 model — advanced reasoning, coding, and long-context analysis",

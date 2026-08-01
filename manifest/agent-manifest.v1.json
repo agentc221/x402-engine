@@ -2278,6 +2278,74 @@
         "embeddings"
       ],
       "final_cost": {
+        "amount": 0.003,
+        "currency": "USD",
+        "includes_network_fees": false,
+        "model": "flat",
+        "notes": "Flat per-request endpoint fee; excludes L1/L2 settlement gas paid separately by payer."
+      },
+      "id": "llm-deepseek-v4-flash-0731",
+      "idempotency": "non_idempotent",
+      "last_verified_at": "2026-02-25T00:00:00Z",
+      "latency": {
+        "p50_ms": 1800,
+        "p95_ms": 9000,
+        "timeout_ms": 45000
+      },
+      "method": "POST",
+      "network_support": [
+        "eip155:4326",
+        "eip155:8453",
+        "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp"
+      ],
+      "path": "/api/llm/deepseek-v4-flash-0731",
+      "price": "$0.003",
+      "refund_policy": {
+        "contact": "support@x402engine.app",
+        "policy": "Case-by-case refunds for provider outages, duplicate charges, or gateway faults.",
+        "sla_hours": 24
+      },
+      "uptime_slo": {
+        "target_pct": 99.5,
+        "window_days": 30
+      }
+    },
+    {
+      "determinism": {
+        "level": "low",
+        "notes": "Model/provider inference output can vary across runs, seeds, and upstream model revisions."
+      },
+      "error_taxonomy": [
+        {
+          "code": "bad_request",
+          "description": "Input validation failed for request payload/query.",
+          "http_status": 400,
+          "retryable": false
+        },
+        {
+          "code": "payment_required",
+          "description": "Payment header missing or underpaid for this route.",
+          "http_status": 402,
+          "retryable": false
+        },
+        {
+          "code": "rate_limited",
+          "description": "Rate limit reached; wait and retry.",
+          "http_status": 429,
+          "retryable": true
+        },
+        {
+          "code": "upstream_unavailable",
+          "description": "Provider unavailable or timed out; retry with backoff or fallback endpoint.",
+          "http_status": 503,
+          "retryable": true
+        }
+      ],
+      "fallback_equivalents": [
+        "code-run",
+        "embeddings"
+      ],
+      "final_cost": {
         "amount": 0.006,
         "currency": "USD",
         "includes_network_fees": false,

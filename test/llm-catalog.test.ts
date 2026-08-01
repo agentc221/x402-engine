@@ -49,6 +49,7 @@ const newModels = {
   "gpt-5.6-terra-pro": "openai/gpt-5.6-terra-pro",
   "gpt-5.6-sol": "openai/gpt-5.6-sol",
   "gpt-5.6-sol-pro": "openai/gpt-5.6-sol-pro",
+  "deepseek-v4-flash-0731": "deepseek/deepseek-v4-flash-0731",
 };
 
 describe("LLM catalog", () => {

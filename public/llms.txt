@@ -86,6 +86,7 @@ x402engine is an API gateway that provides 108 pay-per-call tools for AI agents 
 - Qwen 3.7 Max: $0.015 — `/api/llm/qwen3.7-max`
 - GLM 5.2: $0.03 — `/api/llm/glm-5.2`
 - DeepSeek V4 Flash: $0.003 — `/api/llm/deepseek-v4-flash`
+- DeepSeek V4 Flash 0731: $0.003 — `/api/llm/deepseek-v4-flash-0731`
 - DeepSeek V4 Pro: $0.006 — `/api/llm/deepseek-v4-pro`
 - MiniMax M3: $0.01 — `/api/llm/minimax-m3`
 - GPT-5.6 Luna: $0.02 — `/api/llm/gpt-5.6-luna`
